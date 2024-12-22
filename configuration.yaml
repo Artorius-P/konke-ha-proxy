@@ -1,0 +1,32 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+switch:
+  - platform: rest
+    name: 客厅灯带
+    resource: http://127.0.0.1:8500/switch/6
+    unique_id: 6
+    body_on: '{"arg": "ON"}'
+    body_off: '{"arg": "OFF"}'
+    headers:
+      Content-Type: application/json
+    is_on_template: "{{ value_json.is_active }}"
+  - platform: rest 
+    name: 主卧窗帘
+    resource: http://127.0.0.1:8500/curtain/100
+    unique_id: 100
+    body_on: '{"arg": "OPEN"}'
+    body_off: '{"arg": "CLOSE"}'
+    headers:
+      Content-Type: application/json
+    is_on_template: "{{ value_json.is_open }}"
+ 

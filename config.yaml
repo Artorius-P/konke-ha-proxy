@@ -1,0 +1,35 @@
+# config.yaml
+gateway:
+  host: "YourKonkeGatewayIP"
+  port: 5000
+  username: "admin"
+  password: "admin"
+  zkid: "266590"
+  device_count: 100 # Query查询的数量
+  heartbeat_interval: 20  # seconds
+
+http_server:
+  host: "127.0.0.1"
+  port: 8500
+
+home_assistant:
+  host: "127.0.0.1"
+  port: 8123
+  token: "yourToken"
+
+# 设备映射配置
+devices:
+  # 窗帘设备
+  curtains:
+    "100": "zhu_wo_chuang_lian"      # 主卧窗帘
+
+
+  # 照明设备
+  lights:
+    "6": "ke_ting_deng_dai"             # 客厅灯带
+
+
+# TODO: 日志配置
+logging:
+  level: "info"  # debug, info, warn, error
+  file: "proxy.log"  # 日志文件路径，留空则输出到控制台
